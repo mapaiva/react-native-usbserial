@@ -9,7 +9,6 @@ const USBSerialModule = NativeModules.USBSerial;
 
 class USBSerial {
     constructor() {
-        super();
 
         if (Platform.OS != 'android') {
             throw 'Unfortunately only android is supported';
@@ -23,4 +22,4 @@ class USBSerial {
     }
 }
 
-modules.exports =
+module.exports = USBSerial;
