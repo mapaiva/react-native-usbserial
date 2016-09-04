@@ -1,6 +1,7 @@
 buildscript {
   repositories {
     jcenter()
+    maven { url "https://jitpack.io" }
   }
 
   dependencies {
@@ -28,8 +29,10 @@ android {
 
 repositories {
   mavenCentral()
+  maven { url "https://jitpack.io" }
 }
 
 dependencies {
   compile "com.facebook.react:react-native:0.19.+"
+  compile "com.github.felHR85:UsbSerial:4.4"
 }
