@@ -16,7 +16,15 @@ class USBSerial {
     }
 
     getDeviceListAsync() {
-        return USBSerialModule.getDeviceList();
+        return USBSerialModule.getDeviceListAsync();
+    }
+
+    openDeviceByProductIdAsync() {
+        return USBSerialModule.openDeviceByProductIdAsync();
+    }
+
+    writeAsync() {
+        return USBSerialModule.writeAsync();
     }
 }
 

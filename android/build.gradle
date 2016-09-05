@@ -28,8 +28,10 @@ android {
 
 repositories {
   mavenCentral()
+  maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 }
 
 dependencies {
   compile "com.facebook.react:react-native:0.19.+"
+  compile 'com.hoho.android:usb-serial-for-android:0.2.0-SNAPSHOT@aar'
 }
