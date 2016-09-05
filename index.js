@@ -23,8 +23,8 @@ class USBSerial {
         return USBSerialModule.openDeviceByProductIdAsync(productId);
     }
 
-    writeAsync() {
-        return USBSerialModule.writeAsync();
+    writeAsync(value) {
+        return USBSerialModule.writeAsync(value);
     }
 }
 
