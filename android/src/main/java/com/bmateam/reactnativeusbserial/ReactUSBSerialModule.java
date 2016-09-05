@@ -1,5 +1,7 @@
 package com.bmateam.reactnativeusbserial;
 
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.hardware.usb.UsbDevice;
 import android.hardware.usb.UsbDeviceConnection;
 import android.hardware.usb.UsbManager;
@@ -95,10 +97,12 @@ public class ReactUSBSerialModule extends ReactContextBaseJavaModule {
         UsbDeviceConnection connection = manager.openDevice(driver.getDevice());
 
         if (connection == null) {
-            // You probably need to call UsbManager.requestPermission(driver.getDevice(), ..)
-            promise.reject(new Exception("No connections available"));
+            PendingIntent mPermissionIntent = PendingIntent.getBroadcast(reactContext,
+                    0,
+                    new Intent("com.android.example.USB_PERMISSION"),
+                    0);
 
-            return;
+            manager.requestPermission(driver.getDevice(), mPermissionIntent);
         }
 
         // Read some data! Most have just one port (port 0).
