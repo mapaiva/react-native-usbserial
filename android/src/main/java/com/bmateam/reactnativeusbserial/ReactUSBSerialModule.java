@@ -62,7 +62,7 @@ public class ReactUSBSerialModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void openDeviceByProductIdAsync(int productId, Promise promise) {
+    public void openDeviceByProductIdAsync(Integer productId, Promise promise) {
         ReactApplicationContext reactContext = getReactApplicationContext();
         UsbManager manager = (UsbManager) reactContext.getSystemService(reactContext.USB_SERVICE);
 
@@ -126,10 +126,10 @@ public class ReactUSBSerialModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void writeAsync(byte b, Promise promise) {
+    public void writeAsync(String b, Promise promise) {
 
         if (this.tmpUSBSerialDevice != null) {
-            this.tmpUSBSerialDevice.write(b, promise);
+            this.tmpUSBSerialDevice.write(b.getBytes(), promise);
         } else {
             promise.reject(new Exception("No device opened"));
         }

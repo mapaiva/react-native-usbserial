@@ -13,12 +13,12 @@ public class USBSerialDevice {
         this.port = port;
     }
 
-    public void write(byte b, Promise promise) {
+    public void write(byte[] bArray, Promise promise) {
 
         if (port != null) {
 
             try {
-                port.write(new byte[] { b }, SERIAL_TIMEOUT);
+                port.write(bArray, SERIAL_TIMEOUT);
 
                 promise.resolve(null);
             } catch (IOException e) {
