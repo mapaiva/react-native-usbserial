@@ -15,10 +15,8 @@ class USBSerial {
         }
     }
 
-    async getDeviceList() {
-        let deviceList = await USBSerialModule.getDeviceList();
-
-        return deviceList;
+    getDeviceListAsync() {
+        return USBSerialModule.getDeviceList();
     }
 }
 
