@@ -5,9 +5,9 @@ import {
   NativeModules
 } from 'react-native';
 
-const USBSerialModule = NativeModules.USBSerial;
+const UsbSerialModule = NativeModules.UsbSerial;
 
-class USBSerial {
+class UsbSerial {
     constructor() {
 
         if (Platform.OS != 'android') {
@@ -16,16 +16,12 @@ class USBSerial {
     }
 
     getDeviceListAsync() {
-        return USBSerialModule.getDeviceListAsync();
+        return UsbSerial.getDeviceListAsync();
     }
 
-    openDeviceByProductIdAsync(productId) {
-        return USBSerialModule.openDeviceByProductIdAsync(productId);
-    }
-
-    writeAsync(value) {
-        return USBSerialModule.writeAsync(value);
+    openDeviceAsync(deviceObject = {}) {
+        return UsbSerial.openDeviceByProductIdAsync(deviceObject);
     }
 }
 
-module.exports = USBSerial;
+module.exports = UsbSerial;

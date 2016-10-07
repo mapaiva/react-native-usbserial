@@ -33,7 +33,7 @@ public class ReactUsbSerialModule extends ReactContextBaseJavaModule {
 
     @Override
     public String getName() {
-        return "USBSerial";
+        return "UsbSerial";
     }
 
     @ReactMethod
