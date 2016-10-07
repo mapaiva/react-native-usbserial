@@ -11,13 +11,13 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class ReactUSBSerialPackage implements ReactPackage {
+public class ReactUsbSerialPackage implements ReactPackage {
 
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
 
-        modules.add(new ReactUSBSerialModule(reactContext));
+        modules.add(new ReactUsbSerialModule(reactContext));
 
         return modules;
     }

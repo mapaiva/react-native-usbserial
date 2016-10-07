@@ -5,20 +5,20 @@ import com.hoho.android.usbserial.driver.UsbSerialPort;
 
 import java.io.IOException;
 
-public class USBSerialDevice {
+public class UsbSerialDevice {
     private UsbSerialPort port;
     private static final int SERIAL_TIMEOUT = 1000;
 
-    public USBSerialDevice(UsbSerialPort port) {
+    public UsbSerialDevice(UsbSerialPort port) {
         this.port = port;
     }
 
-    public void write(byte[] bArray, Promise promise) {
+    public void write(String value, Promise promise) {
 
         if (port != null) {
 
             try {
-                port.write(bArray, SERIAL_TIMEOUT);
+                port.write(value.getBytes(), SERIAL_TIMEOUT);
 
                 promise.resolve(null);
             } catch (IOException e) {
@@ -26,7 +26,7 @@ public class USBSerialDevice {
             }
 
         } else {
-            promise.reject(new Exception("No port present for the USBSerialDevice instance"));
+            promise.reject(getNoPortErrorMessage());
         }
     }
 
@@ -36,7 +36,11 @@ public class USBSerialDevice {
             // TODO
             promise.resolve(null);
         } else {
-            promise.resolve(new Exception("No port present for the USBSerialDevice instance"));
+            promise.resolve(getNoPortErrorMessage());
         }
+    }
+
+    private Exception getNoPortErrorMessage() {
+        return new Exception("No port present for the UsbSerialDevice instance");
     }
 }
