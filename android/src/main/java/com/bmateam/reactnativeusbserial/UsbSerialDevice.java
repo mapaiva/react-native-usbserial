@@ -13,7 +13,7 @@ public class UsbSerialDevice {
         this.port = port;
     }
 
-    public void write(String value, Promise promise) {
+    public void writeAsync(String value, Promise promise) {
 
         if (port != null) {
 
@@ -30,7 +30,7 @@ public class UsbSerialDevice {
         }
     }
 
-    public void read(Promise promise) {
+    public void readAsync(Promise promise) {
 
         if (port != null) {
             // TODO
