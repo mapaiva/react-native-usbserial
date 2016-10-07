@@ -20,7 +20,7 @@ class UsbSerial {
     }
 
     openDeviceAsync(deviceObject = {}) {
-        return UsbSerial.openDeviceByProductIdAsync(deviceObject);
+        return UsbSerial.openDeviceAsync(deviceObject);
     }
 }
 
