@@ -16,11 +16,11 @@ class UsbSerial {
     }
 
     getDeviceListAsync() {
-        return UsbSerial.getDeviceListAsync();
+        return UsbSerialModule.getDeviceListAsync();
     }
 
     openDeviceAsync(deviceObject = {}) {
-        return UsbSerial.openDeviceAsync(deviceObject);
+        return UsbSerialModule.openDeviceAsync(deviceObject);
     }
 }
 
