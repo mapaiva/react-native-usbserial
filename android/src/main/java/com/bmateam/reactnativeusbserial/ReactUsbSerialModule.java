@@ -68,7 +68,7 @@ public class ReactUsbSerialModule extends ReactContextBaseJavaModule {
     public void openDeviceAsync(ReadableMap deviceObject, Promise p) {
 
         try {
-            int prodId = deviceObject.getInt("productID");
+            int prodId = deviceObject.getInt("productId");
             UsbManager manager = getUsbManager();
             UsbSerialDriver driver = getUsbSerialDriver(prodId, manager);
 
@@ -77,15 +77,6 @@ public class ReactUsbSerialModule extends ReactContextBaseJavaModule {
 
                 p.resolve(usd);
             } else {
-                /* StringBuilder errMessage = new StringBuilder();
-                String deviceName = deviceObject.getString("deviceName");
-                int prodId = deviceObject.getInt("productId");
-
-                errMessage.append("You don't have permission to open the device %s with the %s productId. ");
-                errMessage.append("Try to execute the method requestUsbPermissionAsync(deviceObject) first");
-
-                throw new Error(String.format(errMessage.toString(), deviceName, prodId)); */
-
                 requestUsbPermission(manager, driver.getDevice(), p);
             }
 
@@ -105,27 +96,6 @@ public class ReactUsbSerialModule extends ReactContextBaseJavaModule {
 
         return new UsbSerialDevice(port);
     }
-
-    /*private void requestUsbPermissionAsync(ReadableMap deviceObject, Promise p) {
-
-        try {
-            UsbManager manager = getUsbManager();
-            UsbDevice device = getUsbSerialDriver(deviceObject, manager).getDevice();
-
-            if (manager.hasPermission(device)) {
-                p.resolve(true);
-            } else {
-                ReactApplicationContext rAppContext = getReactApplicationContext();
-                PendingIntent permIntent = PendingIntent.getBroadcast(rAppContext, 0, new Intent(ACTION_USB_PERMISSION), 0);
-
-                registerBroadcastReceiver(p);
-                manager.requestPermission(device, permIntent);
-            }
-
-        } catch (Exception e) {
-            p.reject(e);
-        }
-    }*/
 
     private void requestUsbPermission(UsbManager manager, UsbDevice device, Promise p) {
 
