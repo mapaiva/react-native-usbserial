@@ -7,7 +7,7 @@ class UsbSerialDevice {
     }
 
     writeAsync(value = "") {
-        return UsbSerialModule.writeInDeviceAsync(UsbSerialDevNativeObject.id, value);
+        return this.UsbSerialModule.writeInDeviceAsync(this.id, value);
     }
 }
 
