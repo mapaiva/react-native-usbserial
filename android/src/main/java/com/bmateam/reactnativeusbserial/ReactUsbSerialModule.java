@@ -76,7 +76,7 @@ public class ReactUsbSerialModule extends ReactContextBaseJavaModule {
             UsbSerialDriver driver = getUsbSerialDriver(prodId, manager);
 
             if (manager.hasPermission(driver.getDevice())) {
-                UsbSerialDevNativeObject usd = createUsbSerialDevice(manager, driver);
+                WritableMap usd = createUsbSerialDevice(manager, driver);
 
                 p.resolve(usd);
             } else {
@@ -106,8 +106,8 @@ public class ReactUsbSerialModule extends ReactContextBaseJavaModule {
         }
     }
 
-    private UsbSerialDevNativeObject createUsbSerialDevice(UsbManager manager,
-                                                           UsbSerialDriver driver) throws IOException {
+    private WritableMap createUsbSerialDevice(UsbManager manager,
+                                              UsbSerialDriver driver) throws IOException {
 
         UsbDeviceConnection connection = manager.openDevice(driver.getDevice());
 
@@ -119,11 +119,14 @@ public class ReactUsbSerialModule extends ReactContextBaseJavaModule {
 
         String id = generateId();
         UsbSerialDevice usd = new UsbSerialDevice(port);
+        WritableMap map = Arguments.createMap();
 
         // Add UsbSerialDevice to the usbSerialDriverDict map
         usbSerialDriverDict.put(id, usd);
 
-        return new UsbSerialDevNativeObject(id);
+        map.putString("id", id);
+
+        return map;
     }
 
     private void requestUsbPermission(UsbManager manager,
@@ -188,8 +191,8 @@ public class ReactUsbSerialModule extends ReactContextBaseJavaModule {
                             UsbManager manager = getUsbManager();
 
                             try {
-                                UsbSerialDevNativeObject usd = createUsbSerialDevice(manager,
-                                                        getUsbSerialDriver(device.getProductId(), manager));
+                                WritableMap usd = createUsbSerialDevice(manager,
+                                        getUsbSerialDriver(device.getProductId(), manager));
 
                                 p.resolve(usd);
                             } catch (Exception e) {

@@ -21,9 +21,9 @@ class UsbSerial {
     }
 
     openDeviceAsync(deviceObject = {}) {
-        const usbSerialDevNativeObject = await UsbSerialModule.openDeviceAsync(deviceObject);
-
-        return new UsbSerialDevice(UsbSerialModule, usbSerialDevNativeObject);
+        return UsbSerialModule.openDeviceAsync(deviceObject).then((usbSerialDevNativeObject) => {
+            return new UsbSerialDevice(UsbSerialModule, usbSerialDevNativeObject);
+        });
     }
 }
 

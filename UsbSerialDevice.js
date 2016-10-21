@@ -1,12 +1,14 @@
 
-export default class UsbSerialDevice() {
+class UsbSerialDevice {
 
     constructor(UsbSerialModule, UsbSerialDevNativeObject) {
         this.UsbSerialModule = UsbSerialModule;
-        this.UsbSerialDevNativeObject = UsbSerialDevNativeObject;
+        this.id = UsbSerialDevNativeObject.id;
     }
 
-    write(value = "") {
+    writeAsync(value = "") {
         return UsbSerialModule.writeInDeviceAsync(UsbSerialDevNativeObject.id, value);
     }
 }
+
+module.exports = UsbSerialDevice;
