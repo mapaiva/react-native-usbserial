@@ -4,6 +4,7 @@ import {
   Platform,
   NativeModules
 } from 'react-native';
+import UsbSerialDevice from './UsbSerialDevice';
 
 const UsbSerialModule = NativeModules.UsbSerial;
 
@@ -20,7 +21,9 @@ class UsbSerial {
     }
 
     openDeviceAsync(deviceObject = {}) {
-        return UsbSerialModule.openDeviceAsync(deviceObject);
+        const usbSerialDevNativeObject = await UsbSerialModule.openDeviceAsync(deviceObject);
+
+        return new UsbSerialDevice(UsbSerialModule, usbSerialDevNativeObject);
     }
 }
 
