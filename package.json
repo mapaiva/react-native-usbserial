@@ -1,15 +1,17 @@
 {
   "name": "react-native-usbserial",
-  "version": "0.0.1",
-  "description": "A USB serial wrapper totally based on usb-serial-for-android",
+  "version": "1.0.0",
+  "description": "An USB Serial driver for react-native",
   "nativePackage": true,
   "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xclassworks/react-native-usbserial.git"
+    "url": "git+https://github.com/mapaiva/react-native-usbserial.git"
   },
   "keywords": [
     "react-native",
@@ -20,7 +22,7 @@
   "author": "Matheus Paiva",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/xclassworks/react-native-usbserial/issues"
+    "url": "https://github.com/mapaiva/react-native-usbserial/issues"
   },
-  "homepage": "https://github.com/xclassworks/react-native-usbserial#readme"
+  "homepage": "https://github.com/mapaiva/react-native-usbserial#readme"
 }
