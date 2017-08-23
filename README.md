@@ -15,6 +15,16 @@ To integrate `react-native-usbserial` with the rest of your react app just execu
 react-native link react-native-usbserial
 ```
 
+### Android
+
+To integrate it with your android application you also need to add these following lines on your `android/app/build.gradle`:
+
+```gradle
+repositories {
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+}
+```
+
 ## Usage
 
 ```javascript
