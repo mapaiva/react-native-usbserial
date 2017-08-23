@@ -1,6 +1,6 @@
 {
   "name": "react-native-usbserial",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An USB Serial driver for react-native",
   "nativePackage": true,
   "main": "index.js",
