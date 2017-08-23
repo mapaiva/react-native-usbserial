@@ -8,9 +8,8 @@ import UsbSerialDevice from './UsbSerialDevice';
 
 const UsbSerialModule = NativeModules.UsbSerial;
 
-class UsbSerial {
+export class UsbSerial {
     constructor() {
-
         if (Platform.OS != 'android') {
             throw 'Unfortunately only android is supported';
         }
@@ -27,4 +26,3 @@ class UsbSerial {
     }
 }
 
-module.exports = UsbSerial;
